@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -14,11 +15,11 @@ class SearchBar extends Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    this.props.onFormSubmit(this.state.searchMusic);
+    this.props.history.push(`/PlaylistResult/${this.state.searchMusic}`);
   };
   render() {
     return (
-      <div className="search-bar" style={{ maxWidth: "50%", margin: "0 auto" }}>
+      <div style={{ maxWidth: "50%", margin: "0 auto", padding: "30px 0px" }}>
         <form onSubmit={this.onFormSubmit}>
           <div
             className="field"
@@ -34,7 +35,7 @@ class SearchBar extends Component {
                 paddingBottom: "20px"
               }}
             >
-              Make your own playlists based on your mood.
+              Find playlists based on your mood.
             </label>
             <input
               style={{
@@ -54,4 +55,4 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+export default withRouter(SearchBar);
