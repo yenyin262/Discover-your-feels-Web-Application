@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import * as $ from "jquery";
 import { authEndpoint, clientId, redirectUri, scopes } from "../config";
 import hash from "../hash";
-import logo from "../logo.svg";
-// import "../App.css";
-import Home from "../Components/Home";
+import logo from "../musicnote.svg";
 
 class SpotifySignIn extends Component {
   constructor() {
@@ -22,7 +19,6 @@ class SpotifySignIn extends Component {
       is_playing: "Paused",
       progress_ms: 0
     };
-    // this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
   }
   componentDidMount() {
     // Set token
@@ -56,9 +52,6 @@ class SpotifySignIn extends Component {
             >
               Login to Spotify
             </a>
-          )}
-          {this.state.token && (
-            <Home token={this.state.token} playlists={this.state.playlist} />
           )}
         </header>
       </div>
