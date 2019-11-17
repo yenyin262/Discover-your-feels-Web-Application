@@ -18,16 +18,21 @@ class Playlist extends Component {
       >
         {playlists.map(playlist => (
           <div key={playlist.id} style={{ flex: "1 1 25%" }}>
-            <div style={{ padding: "20px" }}>
-              <Link to={`/ViewPlaylistPage/${playlist.id}`}>
-                <img
-                  src={playlist.images[0].url}
-                  style={{ maxWidth: "250px" }}
-                />
-              </Link>
-            </div>
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              to={`/ViewPlaylistPage/${playlist.id}`}
+            >
+              <div style={{ padding: "20px" }}>
+                {playlist.images.length && (
+                  <img
+                    src={playlist.images[0].url}
+                    style={{ maxWidth: "250px" }}
+                  />
+                )}
+              </div>
 
-            <div style={{ fontSize: "12" }}> {playlist.name}</div>
+              <div style={{ fontSize: "16px" }}> {playlist.name}</div>
+            </Link>
           </div>
         ))}
       </div>
