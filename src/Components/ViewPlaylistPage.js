@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import styles from "./ViewPlaylistPage.module.css";
+import SearchBar from "./SearchBar";
 
 class ViewPlaylistPage extends React.Component {
   constructor(props) {
@@ -39,45 +40,54 @@ class ViewPlaylistPage extends React.Component {
   }
   render() {
     return (
-      <div style={{ display: "flex", flexWrap: "wrap", padding: "20px" }}>
-        <div className={styles.playlistWrapper}>
-          <div
-            className={[styles.playlistTitleColumn, styles.columnStyles].join(
-              " "
-            )}
-          >
-            Title
-          </div>
-          <div
-            className={[styles.playlistArtistColumn, styles.columnStyles].join(
-              " "
-            )}
-          >
-            Artist
-          </div>
-          <div
-            className={[styles.playlistAlbumColumn, styles.columnStyles].join(
-              " "
-            )}
-          >
-            Album{" "}
-          </div>
+      <div>
+        <SearchBar />
+        <div>
+          Tracks from {this.props.location.state.playlist.name} Playlist
         </div>
-        {this.state.songs.map(song => (
-          <div className={styles.playlistWrapper} key={song.track.id}>
-            <div className={styles.playlistTitleColumn}>{song.track.name}</div>
-            <div className={styles.playlistArtistColumn}>
-              {song.track.artists.reduce(
-                (acc, artist) => ((acc = acc + artist.name + " "), acc),
-                ""
+        <div style={{ display: "flex", flexWrap: "wrap", padding: "20px" }}>
+          <div className={styles.playlistWrapper}>
+            <div
+              className={[styles.playlistTitleColumn, styles.columnStyles].join(
+                " "
               )}
+            >
+              Title
             </div>
-
-            <div className={styles.playlistAlbumColumn}>
-              {song.track.album.name}
+            <div
+              className={[
+                styles.playlistArtistColumn,
+                styles.columnStyles
+              ].join(" ")}
+            >
+              Artist
+            </div>
+            <div
+              className={[styles.playlistAlbumColumn, styles.columnStyles].join(
+                " "
+              )}
+            >
+              Album{" "}
             </div>
           </div>
-        ))}
+          {this.state.songs.map(song => (
+            <div className={styles.playlistWrapper} key={song.track.id}>
+              <div className={styles.playlistTitleColumn}>
+                {song.track.name}
+              </div>
+              <div className={styles.playlistArtistColumn}>
+                {song.track.artists.reduce(
+                  (acc, artist) => ((acc = acc + artist.name + " "), acc),
+                  ""
+                )}
+              </div>
+
+              <div className={styles.playlistAlbumColumn}>
+                {song.track.album.name}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
