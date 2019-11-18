@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class Playlist extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const { playlists } = this.props;
     return (
@@ -20,13 +17,17 @@ class Playlist extends Component {
           <div key={playlist.id} style={{ flex: "1 1 25%" }}>
             <Link
               style={{ textDecoration: "none", color: "inherit" }}
-              to={`/ViewPlaylistPage/${playlist.id}`}
+              to={{
+                pathname: `/ViewPlaylistPage/${playlist.id}`,
+                state: { playlist }
+              }}
             >
               <div style={{ padding: "20px" }}>
                 {playlist.images.length && (
                   <img
                     src={playlist.images[0].url}
                     style={{ maxWidth: "250px" }}
+                    alt="album-art"
                   />
                 )}
               </div>
