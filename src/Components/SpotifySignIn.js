@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { authEndpoint, clientId, redirectUri, scopes } from "../config";
 import hash from "../hash";
 import logo from "../musicnote.svg";
-
+import Home from "./Home";
 class SpotifySignIn extends Component {
   constructor() {
     super();
@@ -44,14 +44,21 @@ class SpotifySignIn extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           {!this.state.token && (
-            <a
-              className="btn btn--loginApp-link"
-              href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-                "%20"
-              )}&response_type=token&show_dialog=true`}
-            >
-              Login to Spotify
-            </a>
+              <div style={{ padding: "20px", fontSize: "20px" }}>
+                Login in with spotify to find your favorite playlists
+              </div>
+            ) && (
+              <a
+                className="btn btn--loginApp-link"
+                href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+                  "%20"
+                )}&response_type=token&show_dialog=true`}
+              >
+                Login to Spotify
+              </a>
+            )}{" "}
+          {this.state.token && (
+            <Home token={this.state.token} playlists={this.state.playlist} />
           )}
         </header>
       </div>
