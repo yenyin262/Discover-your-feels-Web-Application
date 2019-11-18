@@ -2,6 +2,7 @@ import React from "react";
 import Playlist from "./Playlist";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 class PlaylistResult extends React.Component {
   constructor(props) {
@@ -58,10 +59,11 @@ class PlaylistResult extends React.Component {
   }
   render() {
     return (
-      <Playlist
-        playlists={this.state.playlist}
-        //   onClick={playlist => this.setState({ showPlaylist: playlist })}
-      />
+      <div>
+        <SearchBar />
+
+        <Playlist playlists={this.state.playlist} />
+      </div>
     );
   }
 }
