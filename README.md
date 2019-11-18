@@ -1,5 +1,7 @@
 # React Spotify Music Playlist Web Application 
 
+A Web Application that helps you find music playlist based on your mood, and shows you  tracks that are displayed in the playlist. 
+
 ## Instructions to run Project
 
 ```
