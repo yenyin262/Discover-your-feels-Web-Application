@@ -42,7 +42,7 @@ class ViewPlaylistPage extends React.Component {
     return (
       <div>
         <SearchBar />
-        <div>
+        <div style={{ textTransform: "capitalize" }}>
           Tracks from {this.props.location.state.playlist.name} Playlist
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", padding: "20px" }}>
